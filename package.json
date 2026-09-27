@@ -1,0 +1,30 @@
+{
+  "name": "yoohubdeobfbyfox",
+  "version": "1.0.0",
+  "description": "Yoohub Luraph v15 Deobfuscator \u2014 Termux CLI + Web UI",
+  "main": "server.js",
+  "bin": {
+    "deob": "./deob.js"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "web": "node server.js",
+    "server": "node server.js",
+    "cli": "node deob.js",
+    "test": "node deob.js --detect",
+    "postinstall": "node scripts/fetch-luau-linux.js",
+    "fetch-luau": "node scripts/fetch-luau-linux.js"
+  },
+  "keywords": [
+    "luraph",
+    "deobfuscator",
+    "roblox",
+    "luau"
+  ],
+  "author": "yoohubdeobfbyfox",
+  "license": "ISC",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Yoohub Deobf by Fox — Luraph v15</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg"></div>
+  <header class="top">
+    <div class="brand">
+      <span class="logo">🦊</span>
+      <div>
+        <h1>Yoohub Deobf by Fox</h1>
+        <p class="sub">Luraph v15 Deobfuscator · Termux &amp; Web</p>
+      </div>
+    </div>
+    <nav>
+      <a href="#use">ใช้งาน</a>
+      <a href="#termux">Termux</a>
+      <a href="https://github.com/yooohubyooodev-serverscript/yoohubdeobfbyfox" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero card">
+      <h2>ถอดรหัสสคริปต์ Luraph v15</h2>
+      <p>
+        รองรับทั้ง <strong>เทอร์มินัลมือถือ (Termux)</strong> และ
+        <strong>หน้าเว็บนี้</strong> (ตรวจจับบนเบราว์เซอร์ · ถอดรหัสเต็มผ่านเซิร์ฟเวอร์ท้องถิ่น)
+      </p>
+      <div class="badges">
+        <span class="badge ok">Termux CLI</span>
+        <span class="badge ok">Detect บนเว็บ</span>
+        <span class="badge warn">Full deobf ต้องมี Node+Python+Luau</span>
+      </div>
+    </section>
+
+    <section id="use" class="card">
+      <h2>1) วางโค้ด / อัปโหลดไฟล์</h2>
+      <div class="row">
+        <label class="file-btn">
+          เลือกไฟล์ .lua / .luau
+          <input type="file" id="fileInput" accept=".lua,.luau,.txt,text/plain" />
+        </label>
+        <button type="button" id="btnClear" class="ghost">ล้าง</button>
+      </div>
+      <textarea id="source" placeholder="วางโค้ดที่ obfuscate ด้วย Luraph v15 ที่นี่..." spellcheck="false"></textarea>
+      <div class="row actions">
+        <button type="button" id="btnDetect" class="primary">ตรวจจับ (Detect)</button>
+        <button type="button" id="btnDeobf" class="accent" title="ต้องรัน server.js บนเครื่อง">ถอดรหัสเต็ม (Local API)</button>
+      </div>
+      <p class="hint" id="apiHint">
+        ปุ่ม “ถอดรหัสเต็ม” ใช้ได้เมื่อรัน <code>node server.js</code> บนเครื่อง/VPS แล้วเปิดหน้านี้ผ่านเซิร์ฟเวอร์นั้น
+        บน GitHub Pages จะใช้ได้เฉพาะ Detect
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>2) ผลลัพธ์</h2>
+      <div id="status" class="status idle">ยังไม่ได้รัน</div>
+      <pre id="result" class="result empty">—</pre>
+      <div class="row">
+        <button type="button" id="btnCopy" class="ghost" disabled>คัดลอกผลลัพธ์</button>
+        <button type="button" id="btnDownload" class="ghost" disabled>ดาวน์โหลด .lua</button>
+      </div>
+    </section>
+
+    <section id="termux" class="card">
+      <h2>ใช้งานบน Termux (แนะนำสำหรับมือถือ)</h2>
+      <pre class="codeblock">pkg update -y
+pkg install -y git nodejs python curl
+git clone https://github.com/yooohubyooodev-serverscript/yoohubdeobfbyfox.git
+cd yoohubdeobfbyfox
+bash install-termux.sh
+
+# ถอดรหัส
+node deob.js script.lua
+node deob.js script.lua -o out.lua
+node deob.js script.lua --detect
+node deob.js script.lua --no-devirt</pre>
+    </section>
+
+    <section class="card">
+      <h2>รันเว็บ + API บนเครื่องตัวเอง</h2>
+      <pre class="codeblock">npm install
+node server.js
+# เปิด http://localhost:3847</pre>
+      <p class="hint">เซิร์ฟเวอร์จะเสิร์ฟหน้าเว็บนี้และรับ POST <code>/api/deobf</code> เพื่อรัน engine จริง</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Yoohub Deobf by Fox · MIT · ต้นทาง Luraph v15 deobfuscator</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
